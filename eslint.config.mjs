@@ -13,6 +13,7 @@ export default tseslint.config(
   eslintPluginPrettierRecommended,
   {
     languageOptions: {
+      ecmaVersion: 2022,
       globals: {
         ...globals.node,
         ...globals.jest,
@@ -26,7 +27,6 @@ export default tseslint.config(
   },
   {
     rules: {
-      "prettier/prettier": ["error", { printWidth: 100 }],
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-floating-promises": "warn",
       "@typescript-eslint/no-unsafe-argument": "warn",

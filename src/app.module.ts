@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { PointsModule } from './points/points.module';
-import { MongooseModule } from '@nestjs/mongoose';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Module } from "@nestjs/common";
+import { MongooseModule } from "@nestjs/mongoose";
+import { ConfigModule, ConfigService } from "@nestjs/config";
+import { PointModule } from "./point/point.module";
 
 @Module({
   imports: [
@@ -9,7 +9,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     MongooseModule.forRootAsync({
       imports: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGOOSE_URI'),
+        uri: configService.get<string>("MONGOOSE_URI"),
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
@@ -17,7 +17,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       }),
       inject: [ConfigService],
     }),
-    PointsModule
+    PointModule,
   ],
 })
 export class AppModule {}
